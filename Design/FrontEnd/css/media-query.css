@@ -1,6 +1,36 @@
+@media screen and (min-width: 1366px) {
+  .about-img-holder {
+    max-height: 250px;
+  }
+}
+@media screen and (max-width: 1281px) {
+  .book-card:nth-child(4) {
+    display: none;
+  }
+}
+@media screen and (max-width: 979px) {
+  .book-card:nth-child(4) {
+    display: flex;
+  }
+
+  .other-books-holder {
+    flex-wrap: wrap;
+  }
+}
 @media screen and (max-width: 900px) {
   .main-nav {
     padding: 0 0.5em;
+  }
+}
+@media screen and (max-width: 850px) {
+  .latest-book-holder .row .data-col:nth-child(2) {
+    color: #000;
+  }
+  .books-preview::before {
+    display: none;
+  }
+  .books-preview::after {
+    bottom: 85%;
   }
 }
 @media screen and (min-width: 700px) {
@@ -43,7 +73,7 @@
     width: 80%;
     position: fixed;
     left: -100%;
-    top: 2em;
+    top: 3em;
     bottom: 0;
     z-index: 100;
     background-color: rgba(0, 0, 0);
@@ -104,9 +134,30 @@
     width: 100%;
     padding: 0 1em;
   }
+  .about-text {
+    margin: 0.5em 0;
+  }
+  .row.books {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 300px) {
+  .books-preview::after {
+    bottom: 82%;
+  }
 }
 @media screen and (max-width: 500px) {
   .top-nav .contact-info {
     display: none;
+  }
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-message {
+    width: 100%;
+    margin: 2em 0;
+    padding: 0 1em;
+    font-weight: 100;
   }
 }

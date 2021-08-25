@@ -11,11 +11,8 @@ for (let index = 0; index < images.length; index++) {
 const slides = document.querySelectorAll(".slider-holder");
 const dots = document.querySelectorAll(".dot-ind");
 
-console.log(dots);
-
 const init = (n) => {
   slides.forEach((slide) => {
-    // slide.style.display = "none";
     slide.classList.remove("active");
     dots.forEach((dot) => {
       dot.classList.remove("active");
@@ -29,8 +26,8 @@ dots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
     init(index);
     currentSlide = index;
-    timer.stop();
-    timer.start();
+    timer2.stop();
+    timer2.start();
   });
 });
 
@@ -38,19 +35,19 @@ const next = () => {
   currentSlide >= slides.length - 1 ? (currentSlide = 0) : currentSlide++;
   init(currentSlide);
 
-  timer.stop();
-  timer.start();
+  timer2.stop();
+  timer2.start();
 };
 
 const prev = () => {
   currentSlide <= 0 ? (currentSlide = slides.length - 1) : currentSlide--;
   init(currentSlide);
 
-  timer.stop();
-  timer.start();
+  timer2.stop();
+  timer2.start();
 };
 
-function Timer(fn, t) {
+function Timer2(fn, t) {
   var timerObj = setInterval(fn, t);
 
   this.stop = function () {
@@ -77,7 +74,7 @@ function Timer(fn, t) {
   };
 }
 
-var timer = new Timer(function () {
+var timer2 = new Timer2(function () {
   next();
 }, 8000);
 
