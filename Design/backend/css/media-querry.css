@@ -1,0 +1,26 @@
+@media screen and (max-width: 826px) {
+  .data-col.line {
+    border: none;
+  }
+}
+@media screen and (max-height: 610px) {
+  .side-pane {
+    overflow-y: scroll;
+  }
+}
+@media screen and (max-height: 650px) {
+  .form-action.popup {
+    overflow-y: scroll;
+  }
+}
+@media screen and (max-width: 750px) {
+  .main-content {
+    width: 100%;
+  }
+  .new-popup {
+    width: 100%;
+  }
+  .side-pane {
+    left: -100%;
+  }
+}

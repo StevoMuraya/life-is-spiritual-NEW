@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIS Admin</title>
+    <link rel="shortcut icon" href="#" />
+
+    <link
+      rel="shortcut icon"
+      href="./images/logo_new.png"
+      type="image/x-icon"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/media-querry.css" />
+    <link rel="stylesheet" href="./css/all.css" />
+  </head>
+  <body>
+    <div class="admin-container">
+      <div class="side-pane">
+        <div class="top-part">
+          <div class="logo-holder">
+            <img src="./images/logo.png" alt="" />
+          </div>
+          <ul class="links">
+            <li class="list-links">
+              <a href="home.html" class="link">Home</a>
+            </li>
+            <li class="list-links">
+              <a href="about.html" class="link">About</a>
+            </li>
+            <li class="list-links">
+              <a href="books.html" class="link active">Books</a>
+            </li>
+            <li class="list-links">
+              <a href="gallery.html" class="link">Gallery</a>
+            </li>
+            <li class="list-links">
+              <a href="blogs.html" class="link">Blogs</a>
+            </li>
+            <li class="list-links">
+              <a href="videos.html" class="link">Videos</a>
+            </li>
+            <li class="list-links">
+              <a href="contact.html" class="link">Contact</a>
+            </li>
+            <li class="list-links">
+              <a href="testimonies.html" class="link">Testimonies</a>
+            </li>
+          </ul>
+        </div>
+        <div class="lower-part">
+          <ul class="links">
+            <li class="list-links">
+              <a href="" class="link logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="new-popup" id="popup">
+          <div class="close-btn" id="close_popup">
+            <div class="close"></div>
+            <div class="close"></div>
+          </div>
+          <form
+            action=""
+            method="post"
+            class="form-action popup"
+            enctype="multipart/form-data"
+          >
+            <h3 class="form-title">
+              Fill in the form to add new slider content
+            </h3>
+            <div class="input-holder">
+              <input
+                type="text"
+                class="input-space-popup"
+                placeholder="Book title"
+              />
+            </div>
+            <div class="input-holder">
+              <input
+                type="text"
+                class="input-space-popup"
+                placeholder="Book author"
+              />
+            </div>
+            <div class="input-holder">
+              <input
+                type="number"
+                class="input-space-popup"
+                placeholder="Book price"
+              />
+            </div>
+            <div class="input-holder">
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="Book description"
+                class="input-area-popup"
+              ></textarea>
+            </div>
+            <div class="input-holder">
+              <label for="">Book cover image</label>
+              <input type="file" class="input-space popup" />
+            </div>
+            <div class="button-holder">
+              <button class="btn-login">Upload</button>
+            </div>
+          </form>
+        </div>
+        <section class="home-slider">
+          <h2 class="main-title">Books Section</h2>
+          <div class="add-new-holder">
+            <a id="popup_btn" class="add-new-btn">New Book</a>
+          </div>
+          <div class="sliders-holder">
+            <div class="slider-card">
+              <div class="slider-img-holder">
+                <img src="./images/give2-new.jpg" alt="" />
+              </div>
+              <div class="slider-info">
+                <h3 class="slider-title">Laboris non occaecat ad ex</h3>
+                <h3 class="slider-price">Kshs 1,000</h3>
+                <p class="slider-desc">
+                  Ut minim ex aute deserunt amet aute reprehenderit do consequat
+                  anim commodo. Labore proident fugiat laborum proident et id
+                  incididunt cillum deserunt reprehenderit.
+                </p>
+                <div class="card-options">
+                  <a href="" class="edit-card">Edit</a>
+                  <a href="" class="delete-card">Delete</a>
+                </div>
+              </div>
+            </div>
+            <div class="slider-card">
+              <div class="slider-img-holder">
+                <img src="./images/give2-new.jpg" alt="" />
+              </div>
+              <div class="slider-info">
+                <h3 class="slider-title">Laboris non occaecat ad ex</h3>
+                <h3 class="slider-price">Kshs 1,000</h3>
+                <p class="slider-desc">
+                  Ut minim ex aute deserunt amet aute reprehenderit do consequat
+                  anim commodo. Labore proident fugiat laborum proident et id
+                  incididunt cillum deserunt reprehenderit.
+                </p>
+                <div class="card-options">
+                  <a href="" class="edit-card">Edit</a>
+                  <a href="" class="delete-card">Delete</a>
+                </div>
+              </div>
+            </div>
+            <div class="slider-card">
+              <div class="slider-img-holder">
+                <img src="./images/give2-new.jpg" alt="" />
+              </div>
+              <div class="slider-info">
+                <h3 class="slider-title">Laboris non occaecat ad ex</h3>
+                <h3 class="slider-price">Kshs 1,000</h3>
+                <p class="slider-desc">
+                  Ut minim ex aute deserunt amet aute reprehenderit do consequat
+                  anim commodo. Labore proident fugiat laborum proident et id
+                  incididunt cillum deserunt reprehenderit.
+                </p>
+                <div class="card-options">
+                  <a href="" class="edit-card">Edit</a>
+                  <a href="" class="delete-card">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="./js/popup.js"></script>
+  </body>
+</html>
