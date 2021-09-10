@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="data-col">
-        <form action="{{ route('login.store') }}" method="post" class="form-action">
+        <form action="{{ route('login-admin.store') }}" method="post" class="form-action">
             @csrf
           <p class="login-txt">Fill in the form below to login</p>
           <div class="input-holder">

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class GalleryController extends Controller
 {
@@ -27,45 +28,71 @@ class GalleryController extends Controller
 
     public function store(Request $request)
     {
+       
         $this->validate($request,[
             'image_name'=>'required',
+            'album_id'=>'required',
         ]);
 
-        $random = rand(1,4);
-        $random_size = "";
-
-        if ($random == 1) {
-            $random_size = "Big";
-        }else if ($random == 2) {
-            $random_size = "horizontal";
-        }else if ($random == 3) {
-            $random_size = "Vertical";
-        }else{
-            $random_size = "";
-        }
-
-
+        $album_idz = $request->album_id;
         
-        $galleryModel = new Gallery;
+
+        // $fileUpload = new Gallery;
+
+        if($request->hasfile('image_name'))
+         {
+
+            $imageNameArr = [];
+            foreach ($request->image_name as $file) {
+                // you can also use the original name
+                $imageName = $file->getClientOriginalName();
+                $imageNameArr[] = $imageName;
+                $file->move(public_path('storage/gallery'), $imageName);
+            }
+
+            for ($i = 0; $i < count($imageNameArr); $i++) {
+                $random = rand(1,4);
+                $random_size = "";
+
+                if ($random == 1) {
+                    $random_size = "big";
+                }else if ($random == 2) {
+                    $random_size = "horizontal";
+                }else if ($random == 3) {
+                    $random_size = "vertical";
+                }else{
+                    $random_size = "";
+                }
+                $mytime = Carbon::now();
+                
+
+                $gallery[] = [
+                    'image_name' => $imageNameArr[$i],
+                    'random_size' => $random_size,
+                    'album_id' => $album_idz,
+                    'created_at' => $mytime,
+                    'updated_at' => $mytime,
+                ];
+            }
+            Gallery::insert($gallery);
+
+            // for($x = 0; $x < count($imageNameArr); $x++){
+            //     $fileUpload->image_name= $imageNameArr[$x];
+            //     $fileUpload->random_size = $random_size;
+            //     $fileUpload->album_id = $request->album_id;
+            // }
+            
+            // $fileUpload->save();
+            
+            // dd(count($imageNameArr));
+             
+            
+
+         return back();
         
-        if($request->file()) {
-            $image_name = time().'_'.$request->image_name->getClientOriginalName();
-            $filePath = $request->file('image_name')->storeAs('gallery', $image_name, 'public');
-
-            $galleryModel->image_name = time().'_'.$request->image_name->getClientOriginalName();
-            $galleryModel->random_size = $random_size;
-            $galleryModel->save();
-
-            return back();
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //

@@ -1,177 +1,186 @@
 @media screen and (min-width: 1170px) {
-  .about-img-holder {
-    max-height: 250px;
-  }
+    .about-img-holder {
+        max-height: 250px;
+    }
 }
 @media screen and (max-width: 1281px) {
-  .book-card:nth-child(4) {
-    display: none;
-  }
-  .other-books-holder.books-page .book-card:nth-child(4) {
-    display: flex;
-  }
+    .book-card:nth-child(4) {
+        display: none;
+    }
+    .other-books-holder.books-page .book-card:nth-child(4) {
+        display: flex;
+    }
 }
 @media screen and (max-width: 979px) {
-  .book-card:nth-child(4) {
-    display: flex;
-  }
+    .book-card:nth-child(4) {
+        display: flex;
+    }
 
-  .other-books-holder {
-    flex-wrap: wrap;
-  }
+    .other-books-holder {
+        flex-wrap: wrap;
+    }
 }
 @media screen and (max-width: 900px) {
-  .main-nav {
-    padding: 0 0.5em;
-  }
+    .main-nav {
+        padding: 0 0.5em;
+    }
 }
 @media screen and (max-width: 850px) {
-  .latest-book-holder .row .data-col:nth-child(2) {
-    color: #000;
-  }
-  .books-preview::before {
-    display: none;
-  }
-  .books-preview::after {
-    bottom: 85%;
-  }
+    .latest-book-holder .row .data-col:nth-child(2) {
+        color: #000;
+    }
+    .books-preview::before {
+        display: none;
+    }
+    .books-preview::after {
+        bottom: 85%;
+    }
 }
 @media screen and (min-width: 700px) {
-  .slider-title {
-    font-size: 3em;
-    margin: 0 2em;
-  }
-  .slider-sub-title {
-    font-size: 1.5em;
-    width: 40%;
-    font-weight: 300;
-  }
+    .slider-title {
+        font-size: 3em;
+        margin: 0 2em;
+    }
+    .slider-sub-title {
+        font-size: 1.5em;
+        width: 40%;
+        font-weight: 300;
+    }
 }
 @media screen and (max-width: 700px) {
-  .slider-title {
-    font-size: 2em;
-    margin: 0 2em;
-  }
-  .slider-sub-title {
-    font-size: 1em;
-    margin: 0 2em;
-  }
+    .slider-title {
+        font-size: 2em;
+        margin: 0 2em;
+    }
+    .slider-sub-title {
+        font-size: 1em;
+        margin: 0 2em;
+    }
 }
 @media screen and (max-width: 800px) {
-  .main-nav .nav-links {
-    display: none;
-  }
-  .main-nav {
-    justify-content: space-between;
-  }
-  .hamburger {
-    display: flex;
-  }
+    .main-nav .nav-links {
+        display: none;
+    }
+    .main-nav {
+        justify-content: space-between;
+    }
+    .hamburger {
+        display: flex;
+    }
 
-  .mobile-nav.show {
-    left: 0%;
-  }
-  .mobile-nav {
-    display: block;
-    width: 80%;
-    position: fixed;
-    left: -100%;
-    top: 3em;
-    bottom: 0;
-    z-index: 100;
-    background-color: rgba(0, 0, 0);
-    padding: 1em 0;
-    transition: all 500ms ease-in-out;
-    overflow-x: scroll;
-  }
-  .mobile-nav.sticky {
-    top: 0;
-  }
-  .mobile-nav .logo-holder {
-    max-width: 200px !important;
-    padding: 0.5em;
-  }
-  .mobile-links {
-    width: 100%;
-    display: flex;
-    list-style: none;
-    flex-direction: column;
-    padding: 1em 0 0 2em;
-  }
-  .mobile-lists {
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
-  .mobile-link {
-    width: 100%;
-    height: 3em;
-    color: #fff;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin: 0.5em 0 0 0;
-  }
-  .mobile-link.active {
-    color: var(--fade-blue);
-  }
-  .mobile-link:hover {
-    color: var(--fade-blue);
-  }
-  .mobile-lists > .mobile-link.active::before {
-    width: 100%;
-  }
-  .mobile-link::before {
-    content: "";
-    position: absolute;
-    bottom: 10%;
-    width: 0%;
-    height: 5px;
-    background-color: var(--fade-blue);
-  }
+    .mobile-nav.show {
+        left: 0%;
+    }
+    .mobile-nav {
+        display: block;
+        width: 80%;
+        position: fixed;
+        left: -100%;
+        top: 3em;
+        bottom: 0;
+        z-index: 100;
+        background-color: rgba(0, 0, 0);
+        padding: 1em 0;
+        transition: all 500ms ease-in-out;
+        overflow-x: scroll;
+    }
+    .mobile-nav.sticky {
+        top: 0;
+    }
+    .mobile-nav .logo-holder {
+        max-width: 200px !important;
+        padding: 0.5em;
+    }
+    .mobile-links {
+        width: 100%;
+        display: flex;
+        list-style: none;
+        flex-direction: column;
+        padding: 1em 0 0 2em;
+    }
+    .mobile-lists {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .mobile-link {
+        width: 100%;
+        height: 3em;
+        color: #fff;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 0.5em 0 0 0;
+    }
+    .mobile-link.active {
+        color: var(--fade-blue);
+    }
+    .mobile-link:hover {
+        color: var(--fade-blue);
+    }
+    .mobile-lists > .mobile-link.active::before {
+        width: 100%;
+    }
+    .mobile-link::before {
+        content: "";
+        position: absolute;
+        bottom: 10%;
+        width: 0%;
+        height: 5px;
+        background-color: var(--fade-blue);
+    }
 }
 @media screen and (max-width: 600px) {
-  .navbar .top-nav {
-    width: 100%;
-    padding: 0 1em;
-  }
-  .about-text {
-    margin: 0.5em 0;
-  }
-  .row.books {
-    width: 100%;
-  }
+    .navbar .top-nav {
+        width: 100%;
+        padding: 0 1em;
+    }
+    .about-text {
+        margin: 0.5em 0;
+    }
+    .row.books {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 300px) {
-  .books-preview::after {
-    bottom: 82%;
-  }
+    .books-preview::after {
+        bottom: 82%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .album-holder {
+        width: 100%;
+    }
+    .gallery-view-row {
+        width: 100%;
+        padding: 1em;
+    }
 }
 @media screen and (max-width: 500px) {
-  .top-nav .contact-info {
-    display: none;
-  }
-  .contact-form {
-    width: 100%;
-  }
+    .top-nav .contact-info {
+        display: none;
+    }
+    .contact-form {
+        width: 100%;
+    }
 
-  .video-card {
-    min-width: 200px;
-  }
+    .video-card {
+        min-width: 200px;
+    }
 
-  .contact-message {
-    width: 100%;
-    margin: 2em 0;
-    padding: 0 1em;
-    font-weight: 100;
-  }
-  .book-view::before {
-    display: none;
-  }
+    .contact-message {
+        width: 100%;
+        margin: 2em 0;
+        padding: 0 1em;
+        font-weight: 100;
+    }
+    .book-view::before {
+        display: none;
+    }
 
-  .blog-card {
-    min-width: 200px;
-  }
+    .blog-card {
+        min-width: 200px;
+    }
 }

@@ -1,16 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frontend;
 
+use App\Models\albums;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AlbumControl extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('backend.auth.login.index');
+        
+        // $gallerys = Gallery::latest()->limit(2)->where('album_id','=',$id)->get();
+        $albums = albums::latest()->get();
+        // $gallery = Gallery::latest()->get();
+        return view('frontend.gallery.index',[
+            'active'=>'gallery',
+            // 'gallerys'=>$gallerys,
+            'albums'=>$albums,
+        ]);
     }
 
     /**
@@ -31,17 +45,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $this-> validate($request,[
-            'email'=>'required|max:255',
-            'password'=>'required',
-        ]);
-        
-        //Sign in
-        if(!Auth::attempt($request->only('email','password'),$request->remember)){
-            return back() -> with('status', 'Invalid login details');
-        }
-        //redirect
-        return redirect()->route('home-admin.index');
+        //
     }
 
     /**
@@ -52,7 +56,15 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        //
+        $gallery = Gallery::latest()->where('album_id','=',$id)->get();
+        $album = albums::find($id);
+
+        return view('frontend.gallery.selected-album',[
+            'active'=>'gallery',
+            'album_id'=>$id,
+            'gallery'=>$gallery,
+            'album'=>$album,
+        ]);
     }
 
     /**
@@ -86,11 +98,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-
-    }
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login-admin.index');
+        //
     }
 }

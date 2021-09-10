@@ -11,11 +11,11 @@
         >
             @csrf
             <h3 class="form-title">
-                Select an image to upload to gallery
+                Select an images to upload to gallery
             </h3>
             <div class="input-holder">
                 <label for="">Select image</label>
-                <input type="file" name="image_name" class="input-space popup" />
+                <input type="file" multiple name="image_name[]" class="input-space popup" />
             </div>
             <div class="button-holder">
                 <button class="btn-login">Upload</button>

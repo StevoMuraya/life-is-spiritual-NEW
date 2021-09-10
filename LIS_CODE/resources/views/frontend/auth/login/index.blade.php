@@ -1,59 +1,56 @@
-@extends('backend.auth.format')
+@extends('backend.format')
 
-@section('auth_format')
+@section('home_content')
+
 <div class="login-container">
     <div class="login-panel">
       <div class="row">
         <div class="data-col line">
           <div class="login-text">
             <div class="logo-holder">
-                <img src="{{ asset('backend/images/logo.png')}}" alt="" />
+              <img src="{{ asset('/frontend/images/logo.png') }}" alt="" />
             </div>
-            <h1 class="lis-title">
-              Life is Spiritual Minitries Admin register
-            </h1>
+            <h1 class="lis-title">Life is Spiritual Ministries Login</h1>
           </div>
         </div>
         <div class="data-col">
-          <form action="{{ route('register-admin.store') }}" method="post" class="form-action">
+          <form action="{{ route('login.store') }}" method="post" class="form-action">
             @csrf
+            @if (session('status'))
+                <p class="response-message"> {{ session('status') }}</p>
+            @endif
             <p class="login-txt">Fill in the form below to login</p>
             <div class="input-holder">
+                @error('email')
+                  <p class="input-error">{{ $message }}</p>
+                @enderror
               <input
                 type="text"
-                name="fullname"
-                placeholder="Full name"
-                class="input-space"
-              />
-            </div>
-            <div class="input-holder">
-              <input
-                type="email"
                 name="email"
                 placeholder="Email Address"
-                class="input-space"
-              />
-            </div>
-            <div class="input-holder">
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone"
                 class="input-space "
               />
             </div>
             <div class="input-holder">
+                @error('password')
+                  <p class="input-error">{{ $message }}</p>
+                @enderror
               <input
                 type="password"
-                placeholder="Password"
                 name="password"
+                placeholder="Password"
                 class="input-space"
               />
             </div>
             <div class="button-holder">
-              <button class="btn-login">Register</button>
+              <button class="btn-login">Login</button>
             </div>
           </form>
+
+          <p class="text-reg">
+            Don't have an account?
+            <a href="{{ route('register.index') }}">Click here</a> to register
+          </p>
         </div>
       </div>
     </div>

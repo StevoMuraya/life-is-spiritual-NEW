@@ -1,6 +1,6 @@
     <section class="smaller-landing">
         <div class="small-landing-img-holder">
-          <img src="./frontend/images/give1-new.jpg" alt="" />
+          <img src="{{ asset('./frontend/images/give1-new.jpg') }} " alt="" />
         </div>
         <div class="small-landing-text">
           <h1 class="small-landing-title">Gallery</h1>

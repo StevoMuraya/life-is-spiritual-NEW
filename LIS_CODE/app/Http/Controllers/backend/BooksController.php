@@ -150,10 +150,7 @@ class BooksController extends Controller
     public function destroy($id)
     {
         $book = Books::find($id);
-        // dd($book);
         $book->delete();
         return back();
-        // $id->delete();
-        // return back();
     }
 }

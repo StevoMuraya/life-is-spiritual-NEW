@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gallery extends Model
+class albums extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'image_name',
-        'random_size',
-        'album_id',
+        'title',
+        'desc',
     ];
 }

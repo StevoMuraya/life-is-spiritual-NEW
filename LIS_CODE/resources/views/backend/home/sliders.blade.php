@@ -22,7 +22,7 @@
                   <form action="{{ route('home-admin.destroy',$slider->id) }}" method="post" class="form-action">
                     @method('DELETE')
                     @csrf
-                      <button class="delete-card" style="border: none;padding:1em 2em;cursor: pointer;">Delete</button>
+                      <button class="delete-card" onclick="return confirm('Are you sure?')" style="border: none;padding:1em 2em;cursor: pointer;">Delete</button>
                   </form>
                   {{-- <a href="" class="delete-card">Delete</a> --}}
                 </div>

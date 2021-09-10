@@ -9,5 +9,5 @@
 
     @include('frontend.footer')
     
-    <script src="{{ asset('frontend/js/slider.js')  }}"></script>
+    <script src="{{ asset('frontend/js/pop-up-login.js')  }}"></script>
 @endsection

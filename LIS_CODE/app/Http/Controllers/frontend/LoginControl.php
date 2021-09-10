@@ -1,16 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class LoginControl extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('backend.auth.login.index');
+        return view('frontend.auth.login.index');
     }
 
     /**
@@ -35,13 +40,13 @@ class LoginController extends Controller
             'email'=>'required|max:255',
             'password'=>'required',
         ]);
+
         
-        //Sign in
+        // Sign in
         if(!Auth::attempt($request->only('email','password'),$request->remember)){
             return back() -> with('status', 'Invalid login details');
         }
-        //redirect
-        return redirect()->route('home-admin.index');
+        return redirect()->route('home.index');
     }
 
     /**
@@ -86,11 +91,11 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-
+        
     }
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login-admin.index');
+        return redirect()->route('home.index');
     }
 }

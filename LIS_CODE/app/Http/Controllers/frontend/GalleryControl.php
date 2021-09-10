@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\albums;
 use Illuminate\Http\Request;
 use App\Models\Gallery;
 
@@ -15,10 +16,12 @@ class GalleryControl extends Controller
      */
     public function index()
     {
-        $gallery = Gallery::latest()->get();
+
+        $albums = albums::latest()->get();
+        // $gallery = Gallery::latest()->get();
         return view('frontend.gallery.index',[
             'active'=>'gallery',
-            'gallery'=>$gallery,
+            'albums'=>$albums,
         ]);
     }
 

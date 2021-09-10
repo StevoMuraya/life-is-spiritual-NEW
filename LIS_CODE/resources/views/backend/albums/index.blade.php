@@ -1,32 +1,30 @@
 @extends('backend.format')
 
 @section('home_content')
-<div class="admin-container">
-        @include('backend.nav')
+    @include('backend.nav')
+    @include('backend.albums.popup')
     <div class="main-content">
-        @include('backend.books.popup')
       <section class="home-slider">
-        <h2 class="main-title">Books Section</h2>
+        <h2 class="main-title">Albums</h2>
         <div class="add-new-holder">
-          <a id="popup_btn" class="add-new-btn">New Book</a>
+          <a id="popup_btn" class="add-new-btn">New Album</a>
         </div>
         <div class="sliders-holder">
-          @if ($books->count())
-          @foreach ($books as $book)
+          @if ($albums->count())
+          @foreach ($albums as $album)
           <div class="slider-card">
             <div class="slider-img-holder">
-              <img src="./storage/books/{{ $book->book_cover }}" alt="" />
+              <img src="./storage/albums/{{ $album->cover_image }}" alt="" />
             </div>
             <div class="slider-info">
-              <h3 class="slider-title">{{ $book->title }}</h3>
-              <h3 class="slider-price">{{ $book->price }}</h3>
+              <h3 class="slider-title">{{ $album->title }}</h3>
               <p class="slider-desc">
-                {{ $book->description }}
+                {{ $album->desc }}
               </p>
             </div>
             <div class="card-options">
-              <a href="{{ route('books-admin.show', $book->id) }}" class="edit-card">Edit</a>
-              <form action="{{ route('books-admin.destroy',$book->id) }}" method="post" class="form-action">
+              <a href="{{ route('albums-admin.show', $album->id) }}" class="edit-card">Photos</a>
+              <form action="{{ route('albums-admin.destroy',$album->id) }}" method="post" class="form-action">
                 @method('DELETE')
                 @csrf
                 <button class="delete-card" onclick="return confirm('Are you sure?')" style="border: none;padding:1em 2em;cursor: pointer;">Delete</button>
@@ -38,6 +36,5 @@
         </div>
       </section>
     </div>
-  </div>
-  <script src="{{ asset('backend/js/popup.js')  }}"></script>
+    <script src="{{ asset('backend/js/popup.js')  }}"></script>
 @endsection

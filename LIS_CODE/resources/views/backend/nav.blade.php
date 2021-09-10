@@ -33,13 +33,13 @@
                 <a href="{{ route('books-admin.index') }}" class="link ">Books</a>
             </li>
           @endif
-          @if ($active == 'gallery')
+          @if ($active == 'albums')
             <li class="list-links">
-                <a href="{{ route('gallery-admin.index') }}" class="link active">Gallery</a>
+                <a href="{{ route('albums-admin.index') }}" class="link active">Photos</a>
             </li>
           @else
             <li class="list-links">
-                <a href="{{ route('gallery-admin.index') }}" class="link">Gallery</a>
+                <a href="{{ route('albums-admin.index') }}" class="link">Photos</a>
             </li>
           @endif
           @if ($active == 'blogs')
@@ -80,11 +80,11 @@
           @endif
           @if ($active == 'admin')
             <li class="list-links">
-                <a href="{{ route('register.index') }}" class="link active">New admin</a>
+                <a href="{{ route('register-admin.index') }}" class="link active">New admin</a>
             </li>
           @else
             <li class="list-links">
-                <a href="{{ route('register.index') }}" class="link">New admin</a>
+                <a href="{{ route('register-admin.index') }}" class="link">New admin</a>
             </li>
           @endif
       </ul>

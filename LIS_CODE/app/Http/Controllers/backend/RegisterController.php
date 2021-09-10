@@ -32,16 +32,18 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $this-> validate($request,[
             'fullname' => 'required|max:255',
             'email' => 'required|max:255',
+            'phone' => 'required|max:255',
             'password' => 'required',
         ]);
 
         User::create([
             'name' => $request ->fullname,
             'email' => $request ->email,
+            'user_type' => 'admin',
+            'phone' => $request->phone,
             'password' => Hash::make($request ->password    )
         ]);
         

@@ -114,6 +114,23 @@
       </div>
     </section>
 
+    <div class="login-popup" id="popup_view">
+      <div class="login-popup-panel">
+        <h2 class="login-popup-title">Create Account or Login</h2>
+        <div class="login-popup-body">
+          <p class="login-popup-text">
+            We have noticed you have not yet created an account wih us or logged
+            in to your account. Please login or create and account below to
+            proceed to checkout.
+          </p>
+          <div class="login-popup-options">
+            <a href="" class="login-popup-btn login">Login</a>
+            <a href="" class="login-popup-btn register">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <section class="book-view">
       <div class="row books-view">
         <div class="data-col">
@@ -143,7 +160,7 @@
             </p>
             <div class="book-buy-options">
               <p class="book-price">Kshs 1,000</p>
-              <a href="" class="btn buy-book">Buy Book</a>
+              <a class="btn buy-book" id="btn_buy">Buy Book</a>
             </div>
           </div>
         </div>
@@ -290,5 +307,6 @@
       </div>
     </section>
   </body>
+  <script src="./js/pop-up-login.js"></script>
   <script src="./js/nav.js"></script>
 </html>

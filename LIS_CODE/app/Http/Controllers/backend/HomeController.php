@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Models\AboutUs;
 use App\Models\Sliders;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {

@@ -1,16 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frontend;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class RegisterControl extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('backend.auth.login.index');
+        return view('frontend.auth.register.index');
     }
 
     /**
@@ -32,16 +39,28 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $this-> validate($request,[
-            'email'=>'required|max:255',
-            'password'=>'required',
+            'fullname' => 'required|max:255',
+            'email' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'password' => 'required',
         ]);
-        
-        //Sign in
-        if(!Auth::attempt($request->only('email','password'),$request->remember)){
-            return back() -> with('status', 'Invalid login details');
+
+        $dub = User::where('email','=',$request->email)->orwhere('phone','=',$request->phone)->first();
+
+        if ($dub == null) {
+            User::create([
+                'name' => $request ->fullname,
+                'email' => $request ->email,
+                'user_type' => 'user',
+                'phone' => $request->phone,
+                'password' => Hash::make($request ->password    )
+            ]);
+            Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+            return redirect()->route('home.index');
+
+        }else{
+            return back() -> with('status', 'Email address or phone already exists in system');
         }
-        //redirect
-        return redirect()->route('home-admin.index');
     }
 
     /**
@@ -86,11 +105,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-
-    }
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login-admin.index');
+        //
     }
 }

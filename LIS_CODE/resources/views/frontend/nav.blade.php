@@ -6,8 +6,18 @@
             <a href="" class="email">info@lifeisspiritual.org</a>
         </div>
         <div class="account-info">
-            <a href="" class="login-account">Login</a>
-            <a href="" class="login-account">Sign-up</a>
+            @guest
+                <a href="{{ route('login.index') }}" class="login-account">Login</a>
+                <a href="{{ route('register.index') }}" class="login-account">Sign-up</a>
+            @endguest
+
+            @auth
+                <a href="" class="login-account">Stephen Gathaiya</a>
+                <form action="{{ route('exit') }}" method="post">
+                    @csrf
+                    <button class="login-account" style="background: none;border:none;font-size: 16px;cursor: pointer;">Logout</button>
+                </form>
+            @endauth
         </div>
         </div>
         <div class="mobile-nav" id="mobile_nav">
@@ -72,11 +82,11 @@
             @endif
             @if ($active == 'gallery')
                 <li class="list-links">
-                    <a href="{{ route('gallery.index') }}" class="list-link active">Gallery</a>
+                    <a href="{{ route('albums.index') }}" class="list-link active">Gallery</a>
                 </li>
             @else
                 <li class="list-links">
-                    <a href="{{ route('gallery.index') }}" class="list-link">Gallery</a>
+                    <a href="{{ route('albums.index') }}" class="list-link">Gallery</a>
                 </li>
             @endif
             @if ($active == 'videos')

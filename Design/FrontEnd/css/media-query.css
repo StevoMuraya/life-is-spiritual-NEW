@@ -149,6 +149,15 @@
     bottom: 82%;
   }
 }
+@media screen and (max-width: 400px) {
+  .album-holder {
+    width: 100%;
+  }
+  .gallery-view-row {
+    width: 100%;
+    padding: 1em;
+  }
+}
 @media screen and (max-width: 500px) {
   .top-nav .contact-info {
     display: none;
