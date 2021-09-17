@@ -56,8 +56,12 @@ class AlbumControl extends Controller
      */
     public function show($id)
     {
-        $gallery = Gallery::latest()->where('album_id','=',$id)->get();
+        $gallery = Gallery::latest()->where('albums_id','=',$id)->get();
         $album = albums::find($id);
+
+        if ($album ==null) {
+            abort(404);
+        }
 
         return view('frontend.gallery.selected-album',[
             'active'=>'gallery',

@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class ProfileControl extends Controller
 {
+    public function __construct()
+    {
+        $this-> Middleware(['auth']);
+    }
     public function index()
     {
-        return view('backend.auth.login.index');
     }
 
     /**
@@ -32,23 +34,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $this-> validate($request,[
-            'email'=>'required|max:255',
-            'password'=>'required',
-        ]);
-
-        $role = User::where('email','=',$request->email)->first();
-
-        if ($role->user_type != 'admin') {
-            return back() -> with('status', 'You are unauthorized to access this page');
-        }
-        
-        //Sign in
-        if(!Auth::attempt($request->only('email','password'),$request->remember)){
-            return back() -> with('status', 'Invalid login details');
-        }
-        //redirect
-        return redirect()->route('home-admin.index');
+        //
     }
 
     /**
@@ -59,7 +45,11 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('frontend.profile.index',[
+            'active'=>'none',
+            'user'=>$user,
+        ]);
     }
 
     /**
@@ -70,7 +60,9 @@ class LoginController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('frontend.profile.edit',[
+            'active'=>'none',
+        ]);
     }
 
     /**
@@ -81,8 +73,28 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+        $this->validate($request,[
+        'name'=>'required|max:255',
+        'email'=>'required|max:255',
+        'phone'=>'required|max:255',
+        'address'=>'required|max:255',
+        'residence'=>'required|max:255',
+        'country'=>'required|max:255',
+        'postal_code'=>'required|max:255',
+        ]);
+
+        $usermodel = User::where('email','=',$id)->first();
+        $usermodel->name = $request->name;
+        $usermodel->email = $request->email;
+        $usermodel->phone = $request->phone;
+        $usermodel->address = $request->address;
+        $usermodel->residence = $request->residence;
+        $usermodel->country = $request->country;
+        $usermodel->ppostal_code = $request->postal_code;
+        $usermodel->save();
+
+        return redirect()->route('profile.show',$request->email);
     }
 
     /**
@@ -93,11 +105,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-
-    }
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login-admin.index');
+        //
     }
 }

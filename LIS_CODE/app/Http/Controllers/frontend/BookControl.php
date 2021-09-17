@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Models\Books;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\BookPayments;
 
 class BookControl extends Controller
 {
@@ -47,7 +48,14 @@ class BookControl extends Controller
     public function show($id)
     {
         $books = Books::limit(4)->whereNotIn('id', [$id])->latest()->get();
-        $book = Books::find($id);
+        
+        $book = Books::where('slug','=',$id)->first();
+        // $book = Books::find($id);
+
+        if ($book ==null) {
+            abort(404);
+        }
+        // dd($id);
         return view('frontend.books.select-book',[
             'active'=>'books',
             'book'=>$book,
@@ -63,7 +71,6 @@ class BookControl extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -75,7 +82,6 @@ class BookControl extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

@@ -1,17 +1,43 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frontend;
 
-use App\Models\User;
+use App\Models\BookPayments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class PaymentPayController extends Controller
 {
+
+    
+    
+    public function __construct()
+    {
+        $this-> Middleware(['auth']);
+    }
+
+
     public function index()
     {
-        return view('backend.auth.login.index');
+        
+        $userPayment = BookPayments::where('user_id','=',auth()->user()->id)->where('confirmed','=',0)->first();
+        
+
+        if ($userPayment!=null) {
+
+            return view('frontend.checkout.payment_pay',[
+                'active'=>'none',
+                'userPayment'=>$userPayment,
+            ])->with('successMessage','Pending payment confirmation, please confirm the payment details below')
+            ->with('PendingMessg',null);
+
+        }else{
+            return view('frontend.checkout.payment_pay',[
+                'active'=>'none',
+                'userPayment'=>$userPayment,
+            ])->with('successMessage',null)
+            ->with('PendingMessg',null);
+        }
     }
 
     /**
@@ -32,23 +58,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $this-> validate($request,[
-            'email'=>'required|max:255',
-            'password'=>'required',
-        ]);
-
-        $role = User::where('email','=',$request->email)->first();
-
-        if ($role->user_type != 'admin') {
-            return back() -> with('status', 'You are unauthorized to access this page');
-        }
-        
-        //Sign in
-        if(!Auth::attempt($request->only('email','password'),$request->remember)){
-            return back() -> with('status', 'Invalid login details');
-        }
-        //redirect
-        return redirect()->route('home-admin.index');
+        //
     }
 
     /**
@@ -82,7 +92,12 @@ class LoginController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bookPayModel = BookPayments::find($id);
+        $bookPayModel->confirmed = 1;
+        $bookPayModel->save();
+
+        return redirect()->route('books.show',$bookPayModel->book_id) -> with('status', 'Book Purchased');
+
     }
 
     /**
@@ -93,11 +108,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-
-    }
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login-admin.index');
+        //
     }
 }

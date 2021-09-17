@@ -21,6 +21,8 @@
       rel="stylesheet"
     />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="{{ asset('frontend/css/llyv.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/media-query.css') }}" />

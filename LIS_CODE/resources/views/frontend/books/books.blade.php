@@ -19,7 +19,7 @@
                                     {{ Str::limit($book->description,150)}}
                                 </p>
                                 <div class="get-book-holder">
-                                <a href="{{ route('books.show',$book->id) }}" class="get-book">VIEW BOOK</a>
+                                <a href="{{ route('books.show',$book->slug) }}" class="get-book">VIEW BOOK</a>
                                 </div>
                             </div>
                         </div>

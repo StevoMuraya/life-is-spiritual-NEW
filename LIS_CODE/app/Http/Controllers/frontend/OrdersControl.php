@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
+use App\Models\BookPayments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Books;
 
-class LoginController extends Controller
+class OrdersControl extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('backend.auth.login.index');
+        //
     }
 
     /**
@@ -32,23 +38,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $this-> validate($request,[
-            'email'=>'required|max:255',
-            'password'=>'required',
-        ]);
-
-        $role = User::where('email','=',$request->email)->first();
-
-        if ($role->user_type != 'admin') {
-            return back() -> with('status', 'You are unauthorized to access this page');
-        }
-        
-        //Sign in
-        if(!Auth::attempt($request->only('email','password'),$request->remember)){
-            return back() -> with('status', 'Invalid login details');
-        }
-        //redirect
-        return redirect()->route('home-admin.index');
+        //
     }
 
     /**
@@ -59,7 +49,14 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $books = BookPayments::where('user_id','=',auth()->user()->id)->where('confirmed','=',1)->get();
+        
+        return view('frontend.profile.orders',[
+            'active'=>'none',
+            'user'=>$user,
+            'books'=>$books,
+        ]);
     }
 
     /**
@@ -93,11 +90,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-
-    }
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login-admin.index');
+        //
     }
 }

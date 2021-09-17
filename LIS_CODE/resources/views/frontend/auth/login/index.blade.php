@@ -28,7 +28,7 @@
                 type="text"
                 name="email"
                 placeholder="Email Address"
-                class="input-space "
+                class="input-space @error('email') error @enderror"
               />
             </div>
             <div class="input-holder">
@@ -39,7 +39,7 @@
                 type="password"
                 name="password"
                 placeholder="Password"
-                class="input-space"
+                class="input-space @error('password') error @enderror"
               />
             </div>
             <div class="button-holder">

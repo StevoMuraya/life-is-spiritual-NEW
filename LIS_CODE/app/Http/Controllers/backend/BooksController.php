@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\Books;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -60,6 +61,7 @@ class BooksController extends Controller
             $booksModel->author = $request->author;
             $booksModel->price = $request->price;
             $booksModel->description = $request->description;
+            $booksModel->slug = Str::slug($request->title, '-');
             $booksModel->save();
 
             return back()
@@ -68,18 +70,11 @@ class BooksController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show($slug)
     {
-        
-        $book = Books::find($id);
+        $book = Books::where('slug','=',$slug)->first();
         return view('backend.books.select-book',[
-            'active'=>'books',
+            'active'=>'books',  
             'book'=>$book,
         ]);
     }
@@ -113,7 +108,7 @@ class BooksController extends Controller
 
         // dd($request);
 
-        $booksModel = Books::find($id);;
+        $booksModel = Books::where('slug','=',$id)->first();
         
         if($request->file()) {
             $books_cover = time().'_'.$request->book_cover->getClientOriginalName();
@@ -125,12 +120,14 @@ class BooksController extends Controller
             $booksModel->author = $request->author;
             $booksModel->price = $request->price;
             $booksModel->description = $request->description;
+            $booksModel->slug = Str::slug($request->title, '-');
             $booksModel->save();
         }else{ 
             $booksModel->title = $request->title;
             $booksModel->author = $request->author;
             $booksModel->price = $request->price;
             $booksModel->description = $request->description;
+            $booksModel->slug = Str::slug($request->title, '-');
             $booksModel->save();
         }
 

@@ -13,4 +13,10 @@ class Gallery extends Model
         'random_size',
         'album_id',
     ];
+
+    
+    public function albums()
+    {
+        return $this->belongsTo(albums::class);
+    }
 }

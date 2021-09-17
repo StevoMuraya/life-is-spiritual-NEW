@@ -25,7 +25,7 @@
               </p>
             </div>
             <div class="card-options">
-              <a href="{{ route('books-admin.show', $book->id) }}" class="edit-card">Edit</a>
+              <a href="{{ route('books-admin.show', $book->slug) }}" class="edit-card">Edit</a>
               <form action="{{ route('books-admin.destroy',$book->id) }}" method="post" class="form-action">
                 @method('DELETE')
                 @csrf

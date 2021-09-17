@@ -12,4 +12,8 @@ class albums extends Model
         'title',
         'desc',
     ];
+
+    public function photos(){
+        return $this->hasMany(Gallery::class);
+    }
 }

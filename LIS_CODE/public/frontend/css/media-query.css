@@ -159,6 +159,9 @@
     }
 }
 @media screen and (max-width: 500px) {
+    .payment-holder {
+        flex-wrap: wrap;
+    }
     .top-nav .contact-info {
         display: none;
     }

@@ -23,6 +23,13 @@
           </div>
           <div class="data-col">
             <div class="view-book-info">
+              @if (session('status'))
+                <div class="success-text">
+                  <p>{{ session('status') }}</p>
+                  <br />
+                    <a href="{{ route('orders.show',auth()->user()->email) }}" class="view-orders">View Orders</a>
+                </div>
+              @endif
               <h1 class="book-title">{{ $book->title }}</h1>
               <div class="view-info-split">
                 <h4>Author</h4>
@@ -34,7 +41,7 @@
               <div class="book-buy-options">
                 <p class="book-price">Kshs {{ number_format($book->price) }}</p>
                 @auth
-                  <a href="" class="btn buy-book">Buy Book</a>
+                  <a href="{{ route('checkout',$book->slug) }}" class="btn buy-book">Buy Book</a>
                 @endauth
                 @guest
                   <a id="btn_buy" class="btn buy-book">Buy Book</a>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,11 @@ class LoginControl extends Controller
             'password'=>'required',
         ]);
 
+        $role = User::where('email','=',$request->email)->first();
+
+        if ($role->user_type == 'admin') {
+            return back() -> with('status', 'Account disabled from user logins');
+        }
         
         // Sign in
         if(!Auth::attempt($request->only('email','password'),$request->remember)){

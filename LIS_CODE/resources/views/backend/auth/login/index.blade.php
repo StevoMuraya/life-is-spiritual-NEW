@@ -15,23 +15,32 @@
       <div class="data-col">
         <form action="{{ route('login-admin.store') }}" method="post" class="form-action">
             @csrf
+            @if (session('status'))
+                <p class="response-message"> {{ session('status') }}</p>
+            @endif
           <p class="login-txt">Fill in the form below to login</p>
           <div class="input-holder">
+            @error('email')
+              <p class="input-error">{{ $message }}</p>
+            @enderror
             <input
               type="text"
               placeholder="Email Address"
               autocomplete="none"
               name="email"
-              class="input-space"
+              class="input-space  @error('email') error  @enderror"
             />
           </div>
           <div class="input-holder">
+            @error('password')
+              <p class="input-error">{{ $message }}</p>
+            @enderror
             <input
               type="password"
               placeholder="Password"
               name="password"
               autocomplete="none"
-              class="input-space"
+              class="input-space @error('password') error  @enderror"
             />
           </div>
           <div class="button-holder">

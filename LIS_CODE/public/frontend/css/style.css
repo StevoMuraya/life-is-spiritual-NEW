@@ -817,7 +817,7 @@ img {
     background-color: #fff;
     height: 100%;
     padding: 1em 0.5em 0 0.5em;
-    top: 82%;
+    top: 83.5%;
     transition: all 300ms ease-in-out;
     box-shadow: 0 0 0.6em #000a;
 }
@@ -1534,4 +1534,340 @@ img {
 }
 .login-popup-btn:hover {
     transform: scale(1.05);
+}
+
+.user-profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user-profile .row {
+    width: 80%;
+}
+.profile-nav-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 0;
+}
+.prof-logo {
+    width: 100%;
+    background-color: #1e2d8bf5;
+    display: flex;
+    padding: 0.5em;
+}
+.prof-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    /* border: 1px solid #7e7e7e; */
+}
+.prof-lists {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.prof-link {
+    width: 100%;
+    padding: 0.25em 1em;
+    border-left: 1px solid #7e7e7e;
+    border-right: 1px solid #7e7e7e;
+    border-bottom: 1px solid #7e7e7e;
+    transition: all 250ms ease;
+    color: #000a;
+}
+.prof-link:hover {
+    background-color: #eee;
+}
+
+.prof-link.active {
+    background-color: #cacaca;
+    color: #000;
+}
+.user-info-holder {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 0;
+    border: 1px solid #7e7e7e;
+}
+.display-info-panel {
+    width: 100%;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+    justify-content: center;
+}
+.prof-card-holder {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0.125em 0;
+    flex-wrap: wrap;
+    border-right: 1px solid #7e7e7e;
+}
+.profile-title {
+    width: 100%;
+    border-bottom: 1px solid #7e7e7e;
+    padding: 0.25em 0.75em;
+}
+.prof-info-title {
+    width: 80px;
+    margin: 0.125em 1em;
+}
+.prof-info-text {
+    margin: 0.125em 1em;
+}
+.user-info-holder .row {
+    width: 100%;
+}
+.prof-btn-options {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prof-edit-info {
+    width: 100px;
+    background-color: #25a52c;
+    display: flex;
+    justify-content: center;
+    margin: 0 0.25em;
+    padding: 0.5em 0;
+    color: #fff;
+    align-items: center;
+    transition: all 250ms ease;
+}
+.prof-edit-info:hover {
+    background-color: #1bd625;
+}
+.prof-edit-info.logouts {
+    background-color: #dc2727;
+}
+.prof-edit-info.logouts:hover {
+    background-color: #ff0000;
+}
+
+.book-purchase {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.book-purchase .row {
+    width: 90%;
+}
+.btn-purchase {
+    background-color: #1e2c8b;
+    color: #fff;
+    cursor: pointer;
+    transition: all 250ms linear;
+}
+.btn.btn-purchase:hover {
+    background-color: #2d46eb;
+}
+.buy-book-holder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0;
+}
+.buy-book-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buy-book-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dedede;
+    padding: 0.5em;
+}
+.buy-book-row.inner {
+    flex-direction: column;
+}
+.buy-book-image {
+    height: 100%;
+    min-height: 95px;
+    max-width: 100px;
+    min-width: 40px;
+}
+.buy-book-title,
+.buy-book-price {
+    font-size: 0.95em;
+    padding: 0 1em;
+}
+.inner-buy-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.buy-grey-title {
+    color: #000a;
+    font-weight: 400;
+}
+.buy-grey-price {
+    color: #000a;
+    font-weight: 600;
+    padding: 0 1em;
+}
+.buy-total {
+    color: #000;
+    margin: 1.5em 0;
+    font-size: 20px;
+}
+.buy-total-price {
+    color: #000;
+    margin: 1.5em 0;
+    font-size: 20px;
+}
+
+.payments {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.payments-row {
+    width: 90%;
+    height: 100%;
+    min-height: 50vh;
+    max-width: 1366px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.payments-panel {
+    width: 100%;
+    margin: 2em 0;
+    max-width: 60vw;
+    min-width: 180px;
+    min-height: 30vh;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 0.1em #000a;
+    border-radius: 0.25em;
+}
+.payments-panel-header {
+    text-align: center;
+    padding: 0.25em 0;
+    width: 100%;
+    border-bottom: 1px solid #000a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.payments-panel-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+.payment-desc {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.refresh-page {
+    background-color: #25a52c;
+    color: #fff;
+    border-radius: 0.3em;
+    padding: 0.5em 2em;
+    margin: 1em 0;
+    transition: all 250ms ease;
+}
+.refresh-page:hover {
+    background-color: #1bd625;
+}
+
+.phone-payment {
+    font-weight: 700;
+}
+.payment-info {
+    background-color: rgb(248, 240, 194);
+    width: 70%;
+    padding: 1em;
+    margin: 1em 0;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.payment-holder {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.payment-title {
+    font-size: 13px;
+    width: 100px;
+}
+.payment-text {
+    width: 100%;
+    font-size: 10px;
+}
+
+.warning-text {
+    background-color: #dc2727;
+    box-shadow: 0 0 0.5em #dc2727;
+    width: 50%;
+    min-width: 150px;
+    margin: 1em 0;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.3em;
+}
+.success-text {
+    background-color: #25a52c;
+    box-shadow: 0 0 0.5em #25a52c;
+    width: 50%;
+    min-width: 150px;
+    margin: 1em 0;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    text-align: center;
+}
+.payment-title-title {
+    width: 100%;
+    text-align: center;
+}
+
+.orders-holder {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em 1em;
+}
+.order-book-card {
+    max-width: 155px;
+    margin: 0.5em;
+    box-shadow: 0 0 0.5em #000a;
+    cursor: pointer;
+    transition: all 250ms ease;
+}
+.order-book-image {
+    height: 150px;
+}
+.order-book-card:hover {
+    transform: scale(1.01);
+}
+.order-book-info {
+    padding: 0.5em;
 }

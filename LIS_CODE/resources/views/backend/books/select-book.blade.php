@@ -10,7 +10,7 @@
           <h2 class="main-title">Book Edit</h2>
           <div class="row">
             <div class="data-col">
-              <form action="{{ route('books-admin.update',$book->id) }}" method="post" class="form-action" enctype="multipart/form-data">
+              <form action="{{ route('books-admin.update',$book->slug) }}" method="post" class="form-action" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="input-holder">

@@ -73,7 +73,7 @@ class AlbumController extends Controller
     public function show($id)
     {
         
-        $gallery = Gallery::latest()->where('album_id','=',$id)->get();
+        $gallery = Gallery::latest()->where('albums_id','=',$id)->get();
         $album = albums::find($id);
 
 

@@ -12,13 +12,21 @@
                     </div>
                   </div>
                   <div class="other-album-images">
-                    {{-- @if ($gallerys->count())
-                        @foreach ($gallerys as $gallery)
+                    @if ($album->photos->count())
+                      {{-- @for ($i = 0; $i < 2; $i++)
+                        <div class="album-img-holder">
+                          <img src="./storage/albums/{{  }}" alt="" />
+                        </div>
+                      @endfor --}}
+                        @foreach ($album->photos as $i => $photo)
+                          @if ($i > 1) 
+                          @break
+                          @endif
                           <div class="album-img-holder">
-                            <img src="./images/article.jpeg" alt="" />
+                            <img src="./storage/gallery/{{ $photo->image_name }}" alt="" />
                           </div>
                         @endforeach
-                    @endif --}}
+                    @endif
                   </div>
                 </div>
                 <div class="album-text">

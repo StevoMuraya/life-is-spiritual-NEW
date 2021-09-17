@@ -12,7 +12,7 @@
             @endguest
 
             @auth
-                <a href="" class="login-account">Stephen Gathaiya</a>
+                <a href="{{ route('profile.show',auth()->user()->email) }}" class="login-account">{{ auth()->user()->name }}</a>
                 <form action="{{ route('exit') }}" method="post">
                     @csrf
                     <button class="login-account" style="background: none;border:none;font-size: 16px;cursor: pointer;">Logout</button>
@@ -25,27 +25,69 @@
             <img src="{{ asset('/frontend/images/logo.png')}}" class="logo" alt="" />
         </div>
         <ul class="mobile-links">
-            <li class="mobile-lists">
-            <a href="index.html" class="mobile-link active">Home</a>
-            </li>
-            <li class="mobile-lists">
-            <a href="about.html" class="mobile-link">About Us</a>
-            </li>
-            <li class="mobile-lists">
-            <a href="books.html" class="mobile-link">Books</a>
-            </li>
-            <li class="mobile-lists">
-            <a href="gallery.html" class="mobile-link">Gallery</a>
-            </li>
-            <li class="mobile-lists">
-            <a href="videos.html" class="mobile-link">Videos</a>
-            </li>
-            <li class="mobile-lists">
-            <a href="blogs.html" class="mobile-link">Blogs</a>
-            </li>
-            <li class="mobile-lists">
-            <a href="contact.html" class="mobile-link">Contact Us</a>
-            </li>
+            @if ($active == 'home')
+                <li class="mobile-lists">
+                    <a href="{{ route('home.index') }}" class="mobile-link active">Home</a>
+                </li>
+            @else
+                <li class="mobile-lists">
+                    <a href="{{ route('home.index') }}" class="mobile-link">Home</a>
+                </li>
+            @endif
+            @if ($active == 'about')
+                <li class="mobile-lists">
+                    <a href="{{ route('about.index') }}" class="mobile-link active">About Us</a>
+                </li>
+            @else
+                <li class="mobile-lists">
+                    <a href="{{ route('about.index') }}" class="mobile-link">About Us</a>
+                </li>
+            @endif
+            @if ($active == 'books')
+                <li class="mobile-lists">
+                    <a href="{{ route('books.index') }}" class="mobile-link active">Books</a>
+                </li>
+            @else
+                <li class="mobile-lists">
+                    <a href="{{ route('books.index') }}" class="mobile-link">Books</a>
+                </li>
+            @endif
+            @if ($active == 'gallery')
+                <li class="mobile-lists">
+                    <a href="{{ route('albums.index') }}" class="mobile-link active">Gallery</a>
+                </li>
+            @else
+                <li class="mobile-lists">
+                    <a href="{{ route('albums.index') }}" class="mobile-link">Gallery</a>
+                </li>
+            @endif
+            @if ($active == 'videos')
+                <li class="mobile-lists">
+                    <a href="{{ route('videos.index') }}" class="mobile-link active">Videos</a>
+                </li>
+            @else
+                <li class="mobile-lists">
+                    <a href="{{ route('videos.index') }}" class="mobile-link">Videos</a>
+                </li>
+            @endif
+            @if ($active == 'blogs')
+                <li class="mobile-lists">
+                    <a href="{{ route('contact.index') }}" class="mobile-link active">Blogs</a>
+                </li>
+            @else
+                <li class="mobile-lists">
+                    <a href="{{ route('contact.index') }}" class="mobile-link">Blogs</a>
+                </li>
+            @endif
+            @if ($active == 'contact')
+                <li class="mobile-lists">
+                    <a href="{{ route('contact.index') }}" class="mobile-link active">Contact Us</a>
+                </li>
+            @else
+                <li class="mobile-lists">
+                    <a href="{{ route('contact.index') }}" class="mobile-link">Contact Us</a>
+                </li>
+            @endif
         </ul>
         </div>
         <div class="main-nav" id="main_nav">

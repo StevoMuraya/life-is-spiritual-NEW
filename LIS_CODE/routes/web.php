@@ -20,19 +20,15 @@ use App\Http\Controllers\backend\VideosController;
 use App\Http\Controllers\backend\GalleryController;
 use App\Http\Controllers\backend\RegisterController;
 use App\Http\Controllers\frontend\LoginControl;
+use App\Http\Controllers\frontend\OrdersControl;
+use App\Http\Controllers\frontend\payment\MpesaController;
+use App\Http\Controllers\frontend\PaymentPayController;
+use App\Http\Controllers\frontend\ProfileControl;
 use App\Http\Controllers\frontend\RegisterControl;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
-Route::post('logout', [LoginController::class,'logout']) ->name('logout');
+
 Route::post('exit', [LoginControl::class,'logout']) ->name('exit');
-Route::post('about_one', [HomeController::class,'about_us_one']) ->name('about_one');
-Route::post('about_two', [HomeController::class,'about_us_two']) ->name('about_two');
-
-Route::post('about_us_one', [AboutController::class,'about_one']) ->name('about_us_one');
-Route::post('about_us_two', [AboutController::class,'about_two']) ->name('about_us_two');
-Route::post('about_us_three', [AboutController::class,'about_three']) ->name('about_us_three');
-Route::post('about_us_four', [AboutController::class,'about_four']) ->name('about_us_four');
-Route::post('about_us_five', [AboutController::class,'about_five']) ->name('about_us_five');
-
 Route::resource('/', HomeControl::class);
 Route::resource('home', HomeControl::class);
 Route::resource('books', BookControl::class);
@@ -42,10 +38,19 @@ Route::resource('videos', VideoControl::class);
 Route::resource('blogs', BlogsCotrol::class);
 Route::resource('contact', ContactCotrol::class);
 Route::resource('login', LoginControl::class);
+Route::resource('profile', ProfileControl::class);
+Route::resource('orders', OrdersControl::class);
 Route::resource('register', RegisterControl::class);
+Route::resource('register', RegisterControl::class);
+Route::resource('payments', PaymentPayController::class);
+
+Route::get('checkout/{book}', [MpesaController::class,'index']) ->name('checkout');
+Route::post('getToken', [MpesaController::class,'getAccessToken']) ->name('getToken');
+Route::post('registerUrl', [MpesaController::class,'registerUrl']) ->name('registerUrl');
+Route::post('simulatePay/{id}', [MpesaController::class,'simulateTransaction']) ->name('simulatePay');
+Route::post('purchase/{id}', [MpesaController::class,'stkPush']) ->name('purchase');
+
 Route::resource('login-admin', LoginController::class);
-
-
 Route::group(['middleware' => ['admin']], function () {
     Route::resource('register-admin', RegisterController::class);
     Route::resource('home-admin', HomeController::class);
@@ -55,4 +60,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('gallery-admin', GalleryController::class);
     Route::resource('blogs-admin', BlogsController::class);
     Route::resource('videos-admin', VideosController::class);
+    Route::post('logout', [LoginController::class,'logout']) ->name('logout');
+    Route::post('about_one', [HomeController::class,'about_us_one']) ->name('about_one');
+    Route::post('about_two', [HomeController::class,'about_us_two']) ->name('about_two');
+    Route::post('about_us_one', [AboutController::class,'about_one']) ->name('about_us_one');
+    Route::post('about_us_two', [AboutController::class,'about_two']) ->name('about_us_two');
+    Route::post('about_us_three', [AboutController::class,'about_three']) ->name('about_us_three');
+    Route::post('about_us_four', [AboutController::class,'about_four']) ->name('about_us_four');
+    Route::post('about_us_five', [AboutController::class,'about_five']) ->name('about_us_five');
 });

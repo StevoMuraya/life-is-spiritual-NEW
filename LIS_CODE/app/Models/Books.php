@@ -14,5 +14,6 @@ class Books extends Model
         'price',
         'description',
         'book_cover',
+        'slug',
     ];
 }
