@@ -51,12 +51,16 @@ class RegisterControl extends Controller
             User::create([
                 'name' => $request ->fullname,
                 'email' => $request ->email,
+                'phone' => $request ->phone,
                 'user_type' => 'user',
-                'phone' => $request->phone,
+                'address' => ' ',
+                'residence' => ' ',
+                'coutry' => ' ',
+                'ppostal_code' => ' ',
                 'password' => Hash::make($request ->password    )
             ]);
             Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-            return redirect()->route('home.index');
+            return redirect()->route('profile.show',auth()->user()->email);
 
         }else{
             return back() -> with('status', 'Email address or phone already exists in system');
